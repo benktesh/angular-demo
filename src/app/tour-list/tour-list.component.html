@@ -1,0 +1,34 @@
+<!-- <h2>Tours</h2> --!>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
+
+
+
+<table class="table table-hover">
+	<tr>
+		<td style="width:40%; vertical-align:top;">
+			<div *ngFor="let tour of tours" [class.selected]="tour === selectedTour"
+				[class.videoLink]="this.sanitizer.bypassSecurityTrustUrl(tour.videoLink)" (click)="onSelect(tour)">
+				<h3>
+					{{tour.name }}
+				</h3>
+
+				<p *ngIf="tour.description" (click)="onSelect(tour)">
+					{{ tour.description }}
+				</p>
+			</div>
+		</td>
+		<td>
+
+
+			<div>
+				<app-tour-detail [tour]="selectedTour">
+				</app-tour-detail>
+			</div>
+		</td>
+	</tr>
+</table>
