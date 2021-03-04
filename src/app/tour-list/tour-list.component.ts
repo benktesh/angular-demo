@@ -16,8 +16,11 @@ import { Tours } from "../tours";
   styleUrls: ["./tour-list.component.css"]
 })
 export class TourListComponent {
+  pageTitle:String = "Availbale Tours"
   tours = Tours;
+  filteredTours: Tour[] = [];
   isLinear = false;
+  _filterTour:string = '';
 
   selectedTour?: Tour;
   videoLink?: SafeUrl;
@@ -39,6 +42,22 @@ export class TourListComponent {
 
   share() {
     window.alert("The tour has been shared!");
+  }
+
+  _listFilter = '';
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredTours = this.listFilter ? this.performFilter(this.listFilter) : this.tours;
+  }
+
+  performFilter(filterBy: string): Tour[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.tours.filter((product: Tour) =>
+      product.name.toLocaleLowerCase().indexOf(filterBy) !== -1 || product.description.toLocaleLowerCase().indexOf(filterBy) !== -1) ;
   }
 }
 
