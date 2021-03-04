@@ -5,49 +5,22 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 -->
-<div class="col-sm-12">
- 
-		<div class="h3">
-	
-			{{pageTitle}}
-		</div>
-		<div class='col-md-2' style="text-align: left;">Filter Tour: <input type='text' style="text-align: left;" /></div>
-	
-	
-	 
-	
-</div>
 
 
-
-<div class="card-deck">
-	<div *ngFor="let tour of tours" [class.selected]="tour === selectedTour"
-		[class.videoLink]="this.sanitizer.bypassSecurityTrustUrl(tour.videoLink)" (click)="onSelect(tour)">
-		<div class="container-fluid mt-4">
-			<div class="row justify-content-center">
-				<div class="col-auto mb-3">
-					<div class='card' style="width: 18rem;">
-						<div class='card-header'>
-							{{tour.name }}
-						</div>
-						<div class='card-body'>
-							<div class='row'>
-								<p *ngIf="tour.description" (click)="onSelect(tour)">
-									{{ tour.description }}
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 <table class="table table-hover">
 	<tr>
 		<td style="width:40%; vertical-align:top;">
+			<div *ngFor="let tour of tours" [class.selected]="tour === selectedTour"
+				[class.videoLink]="this.sanitizer.bypassSecurityTrustUrl(tour.videoLink)" (click)="onSelect(tour)">
+				<h3>
+					{{tour.name }}
+				</h3>
 
+				<p *ngIf="tour.description" (click)="onSelect(tour)">
+					{{ tour.description }}
+				</p>
+			</div>
 		</td>
 		<td>
 
