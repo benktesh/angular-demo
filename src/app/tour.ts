@@ -5,4 +5,6 @@ export interface Tour {
   moreinfo: string
   videoLink: string;
   steps: Array<Tour>;
+  imageSource: string[];
+  
 }

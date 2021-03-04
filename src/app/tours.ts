@@ -33,13 +33,16 @@ const KathmanduCity: Tour = {
   description: "Capital city of Nepal",
   videoLink: "https://www.youtube.com/embed/DJlmVOSEvGA",
   moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
-  steps: null
+  steps: null,
+  imageSource: [
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lonelyplanet.com%2Fnepal%2Fkathmandu&psig=AOvVaw0DvCYR00BqnN8ZUXxbATA_&ust=1614916982015000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjKotrgle8CFQAAAAAdAAAAABAI"
+  ]
 };
 
 const DhangadhiCity: Tour = {
   id: 1,
   name: "Dhangadhi City",
-  description: "Heaet of far-west",
+  description: "Heart of far-west",
   videoLink: "https://www.youtube.com/embed/GqgDjKvw4z0",
   moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
   steps: null
@@ -125,34 +128,44 @@ export const Tours: Tour[] = [
   {
     id: 1,
     name: "Kathmandu",
-    description: "A large phone with one of the best screens",
+    description: "A melting pot of Hindu and Buddism",
     videoLink: "https://www.youtube.com/embed/DJlmVOSEvGA",
     moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
-    steps: KathmanduSteps
+    steps: KathmanduSteps,
+    imageSource: [
+      "https://www.welcomenepal.com/uploads/destination/kathmandu-oy-lt2.jpeg"
+    ]
   },
   {
     id: 2,
     name: "Dhangadhi",
-    description: "A great phone with one of the best cameras",
+    description: "Foothills of the Himalaya",
     moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
     videoLink: "https://www.youtube.com/embed/DJlmVOSEvGA",
-    steps: DhangadhiSteps
+    steps: DhangadhiSteps,
+    imageSource: [
+      "https://upload.wikimedia.org/wikipedia/commons/c/c0/Dhangadhi1.jpg"
+    ]
   },
   {
     id: 3,
     name: "Ilam",
-    description: "Ilam",
+    description: "Hills, Tea and Garden",
     videoLink: "https://www.youtube.com/watch?v=DJlmVOSEvGA",
     moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
-    steps: IlamSteps
+    steps: IlamSteps,
+    imageSource: [
+      "http://www.hiketonepal.com/wp-content/uploads/bfi_thumb/Tea-Garden-msp8tklevf2nlow9zzlqe4xgp19gi03dj2oi6knci0.jpg"
+    ]
   },
-   {
+  {
     id: 4,
     name: "Hetauda",
-    description: "Hetauda",
+    description: "Hetauda - the gateway to the hills",
     videoLink: "https://www.youtube.com/watch?v=DJlmVOSEvGA",
     moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
-    steps: HetaudaSteps
+    steps: HetaudaSteps,
+    imageSource: ["https://nepaltraveller.com/uploads/destination/hetauda.jpg"]
   }
 ];
 
