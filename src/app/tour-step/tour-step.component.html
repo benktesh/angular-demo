@@ -1,9 +1,11 @@
-<p *ngIf="step">
+<div class="justify-content-center" *ngIf="step">
+  
+    {{step.description}} 
 
-  <br />
-  {{step.description}}
-  <br />
-	<iframe width="560" height="315" [src]="videoLink" frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen></iframe>
-</p>
+    <div class="video-container">
+      <iframe [src]="videoLink" frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+    </div>
+
+</div>

@@ -1,13 +1,14 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 import {
   DomSanitizer,
-  SafeResourceUrl,
   SafeUrl
 } from "@angular/platform-browser";
+import { Observable } from "rxjs";
 
-import { Tour } from "../tour";
+import { ITour } from "../tour";
 import { Tours } from "../tours";
 
 @Component({
@@ -18,23 +19,25 @@ import { Tours } from "../tours";
 export class TourListComponent {
   pageTitle: String = "Availbale Tours";
   tours = Tours;
-  filteredTours: Tour[] = [];
+  filteredTours: ITour[] = [];
   isLinear = false;
   _filterTour: string = "";
-
-  selectedTour?: Tour;
+  
+  selectedTour?: ITour;
   videoLink?: SafeUrl;
 
   constructor(
     private sanitizer: DomSanitizer,
-    private _formBuilder: FormBuilder
-  ) {}
+  ) {
+
+  }
 
   ngOnInit() {
+
     this.filteredTours = this.tours;
   }
 
-  onSelect(tour: Tour): void {
+  onSelect(tour: ITour): void {
     this.selectedTour = tour;
     this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(
       tour.videoLink
@@ -57,14 +60,28 @@ export class TourListComponent {
       : this.tours;
   }
 
-  performFilter(filterBy: string): Tour[] {
+  performFilter(filterBy: string): ITour[] {
+    if(filterBy == null || filterBy == "*" || filterBy.length == 0 ){
+      return this.tours;
+    }
     filterBy = filterBy.toLocaleLowerCase();
     return this.tours.filter(
-      (product: Tour) =>
-        product.name.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
-        product.description.toLocaleLowerCase().indexOf(filterBy) !== -1
+      (tour: ITour) =>
+        tour.name.toLocaleLowerCase().includes(filterBy) || 
+        tour.description.toLocaleLowerCase().includes(filterBy) 
     );
   }
+
+  getTourImage(tour: ITour) {
+    if(tour.imageSource == null){
+      console.log("Empty Tour.");
+      return null;
+    } else {
+      return tour.imageSource[Math.floor(Math.random() * tour.imageSource.length)];
+    }
+
+  }
+
 }
 
 /*

@@ -1,6 +1,6 @@
-import { Tour } from "./tour";
+import { ITour } from "./tour";
 
-const LondonAirport: Tour = {
+const LondonAirport: ITour = {
   id: 1,
   name: "London Airport",
   description: "The place of big Ben",
@@ -9,7 +9,7 @@ const LondonAirport: Tour = {
   steps: null
 };
 
-const KathmanduAirport: Tour = {
+const KathmanduAirport: ITour = {
   id: 1,
   name: "Kathmandu Airport",
   description: "Gateway to Himalayas",
@@ -18,7 +18,7 @@ const KathmanduAirport: Tour = {
   steps: null
 };
 
-const DhangadhiAirport: Tour = {
+const DhangadhiAirport: ITour = {
   id: 1,
   name: "Dhangadhi Airport",
   description: "Central hub of the farwest.",
@@ -27,7 +27,7 @@ const DhangadhiAirport: Tour = {
   steps: null
 };
 
-const KathmanduCity: Tour = {
+const KathmanduCity: ITour = {
   id: 1,
   name: "Kathmandu City",
   description: "Capital city of Nepal",
@@ -39,7 +39,7 @@ const KathmanduCity: Tour = {
   ]
 };
 
-const DhangadhiCity: Tour = {
+const DhangadhiCity: ITour = {
   id: 1,
   name: "Dhangadhi City",
   description: "Heart of far-west",
@@ -48,7 +48,7 @@ const DhangadhiCity: Tour = {
   steps: null
 };
 
-const Soaltee: Tour = {
+const Soaltee: ITour = {
   id: 1,
   name: "Hotel Soaltee",
   description: "Crown in the city.",
@@ -57,7 +57,7 @@ const Soaltee: Tour = {
   steps: null
 };
 
-const Sathi: Tour = {
+const Sathi: ITour = {
   id: 1,
   name: "Hotel Sathi",
   description: "Friendship realized here.",
@@ -66,7 +66,7 @@ const Sathi: Tour = {
   steps: null
 };
 
-const ChitawanAirport: Tour = {
+const ChitawanAirport: ITour = {
   id: 1,
   name: "Chitawan",
   description: "plains and crosswalk",
@@ -75,7 +75,7 @@ const ChitawanAirport: Tour = {
   steps: null
 };
 
-const Kanyam: Tour = {
+const Kanyam: ITour = {
   id: 1,
   name: "Kanyam",
   description: "No place like this.",
@@ -84,7 +84,7 @@ const Kanyam: Tour = {
   steps: null
 };
 
-const Hetauda: Tour = {
+const Hetauda: ITour = {
   id: 1,
   name: "Hetauda",
   description: "Hetauda place like this.",
@@ -93,14 +93,14 @@ const Hetauda: Tour = {
   steps: null
 };
 
-const KathmanduSteps: Tour[] = [
+const KathmanduSteps: ITour[] = [
   LondonAirport,
   KathmanduAirport,
   KathmanduCity,
   Soaltee
 ];
 
-const DhangadhiSteps: Tour[] = [
+const DhangadhiSteps: ITour[] = [
   LondonAirport,
   KathmanduAirport,
   DhangadhiAirport,
@@ -108,7 +108,7 @@ const DhangadhiSteps: Tour[] = [
   Sathi
 ];
 
-const IlamSteps: Tour[] = [
+const IlamSteps: ITour[] = [
   LondonAirport,
   KathmanduAirport,
   KathmanduCity,
@@ -116,7 +116,7 @@ const IlamSteps: Tour[] = [
   Kanyam
 ];
 
-const HetaudaSteps: Tour[] = [
+const HetaudaSteps: ITour[] = [
   LondonAirport,
   KathmanduAirport,
   KathmanduCity,
@@ -124,7 +124,7 @@ const HetaudaSteps: Tour[] = [
   Hetauda
 ];
 
-export const Tours: Tour[] = [
+export const Tours: ITour[] = [
   {
     id: 1,
     name: "Kathmandu",

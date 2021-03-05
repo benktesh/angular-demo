@@ -1,155 +1,38 @@
-<div *ngIf="tour">
-	<h3>{{tour.name}}</h3>
-	<!-- Tour Introduction -->
-	<div *ngIf="tour.description">
-		{{tour.description}}
-	</div>
-
-	<!-- May be rotating pictures -->
-
-
-	<!-- MoreInfo -->
-	<div *ngIf="tour.moreinfo">
-		Additional information at {{tour.moreinfo}}.
-	</div>
-
-  
-
-<mat-vertical-stepper [linear]="isLinear" #stepper>
-
-  <li *ngFor="let step of tour.steps; index as i; first as isFirst">
-     <mat-step>
-      <ng-template matStepLabel>{{step.name}}</ng-template>
-      
-      <app-tour-step [step]="step">
-			</app-tour-step>
-      
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-  </mat-step>
-	</li>
-
-  <mat-step>
-    <ng-template matStepLabel>Complete</ng-template>
-    This completes the tour.
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
-</mat-vertical-stepper>
-
-
-<!-- 
-
-create a stepper that gets a list of steps 
-rendet that as stepper
-
-
--->
-
-
-	<!--
-	<iframe width="560" height="315" [src]="videoLink" frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen></iframe>
-
-    -->
-
-
-
-	<!--Stepper -->
-
-	<!--
-
-	<li *ngFor="let step of tour.steps; index as i; first as isFirst">
-		{{i}}/{{tour.name}}. {{step.name}} <span *ngIf="isFirst">default</span>
-
-
-		<div *ngIf="step">
-			<app-tour-step [step]="stepp">
-			</app-tour-step>
+<div class="d-flex justify-content-center">
+	<div *ngIf="tour">
+		<h3>{{tour.name}}</h3>
+		<!-- Tour Introduction -->
+		<div *ngIf="tour.description">
+			{{tour.description}}
 		</div>
 
-	</li>
+		<!-- May be rotating pictures -->
 
-  -->
 
-  <!--
+		<!-- MoreInfo -->
+		<div *ngIf="tour.moreinfo">
+			Additional information at {{tour.moreinfo}}.
+		</div>
 
-	<div [formGroup]="mainFormGroup">
-		<mat-vertical-stepper formArrayName="stepData" linear #stepper="matVerticalStepper"
-			[selectedIndex]="currentStep">
-			<mat-step *ngFor="let stepForm of mainFormGroup.get('stepData')['controls']; let i = index"
-				[stepControl]="stepForm">
-				<div [formGroup]="stepForm">
-					<ng-template matStepLabel>Tour Step {{i + 1}}.</ng-template>
-					<mat-form-field>
-						{{matInput}}
-						<mat-label>Name</mat-label>
-
-						<input matInput formControlName="name" placeholder="Name" required />
-
-            <input matInput formControlName="title" placeholder="title" required />
-		</mat-form-field>
-
-					
-
-						
+		<mat-vertical-stepper [linear]="isLinear" #stepper>
+			<li *ngFor="let step of tour.steps; index as i; first as isFirst">
+				<mat-step>
+					<ng-template matStepLabel>{{step.name}}</ng-template>
+					<app-tour-step [step]="step">
+					</app-tour-step>
 					<div>
-						<button mat-button matStepperNext (click)="addInput(i)">Next</button>
+						<button mat-button matStepperNext>Next</button>
 					</div>
-                
+				</mat-step>
+			</li>
+
+			<mat-step>
+				<ng-template matStepLabel>Complete</ng-template>
+				This completes the tour.
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button (click)="stepper.reset()">Reset</button>
 				</div>
-
-
 			</mat-step>
-
 		</mat-vertical-stepper>
 	</div>
-
-
--->
-	<!-- 
-	<mat-vertical-stepper [linear]="isLinear" #stepper>
-		<mat-step [stepControl]="firstFormGroup">
-			<form [formGroup]="firstFormGroup">
-				<ng-template matStepLabel>Fill out your name</ng-template>
-				<mat-form-field>
-					<mat-label>Name</mat-label>
-					<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-					<div>
-						<button mat-button matStepperNext>Next</button>
-					</div>
-			</form>
-		</mat-step>
-		<mat-step [stepControl]="secondFormGroup">
-			<form [formGroup]="secondFormGroup">
-				<ng-template matStepLabel>Fill out your address</ng-template>
-				<mat-form-field>
-					<mat-label>Address</mat-label>
-					<input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-					<div>
-						<button mat-button matStepperPrevious>Back</button>
-						<button mat-button matStepperNext>Next</button>
-					</div>
-			</form>
-		</mat-step>
-		<mat-step>
-			<ng-template matStepLabel>Done</ng-template>
-			<p>You are now done.</p>
-			<div>
-				<button mat-button matStepperPrevious>Back</button>
-				<button mat-button (click)="stepper.reset()">Reset</button>
-			</div>
-		</mat-step>
-	</mat-vertical-stepper>
-
-</div>
-
--->
