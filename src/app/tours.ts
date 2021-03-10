@@ -134,7 +134,8 @@ export const Tours: ITour[] = [
     steps: KathmanduSteps,
     imageSource: [
       "https://www.welcomenepal.com/uploads/destination/kathmandu-oy-lt2.jpeg"
-    ]
+    ],
+    rating:4
   },
   {
     id: 2,
@@ -145,7 +146,8 @@ export const Tours: ITour[] = [
     steps: DhangadhiSteps,
     imageSource: [
       "https://upload.wikimedia.org/wikipedia/commons/c/c0/Dhangadhi1.jpg"
-    ]
+    ],
+    rating:5
   },
   {
     id: 3,
@@ -156,7 +158,8 @@ export const Tours: ITour[] = [
     steps: IlamSteps,
     imageSource: [
       "http://www.hiketonepal.com/wp-content/uploads/bfi_thumb/Tea-Garden-msp8tklevf2nlow9zzlqe4xgp19gi03dj2oi6knci0.jpg"
-    ]
+    ],
+    rating:3
   },
   {
     id: 4,
@@ -165,7 +168,9 @@ export const Tours: ITour[] = [
     videoLink: "https://www.youtube.com/watch?v=DJlmVOSEvGA",
     moreinfo: "https://en.wikipedia.org/wiki/Dhangadhi",
     steps: HetaudaSteps,
-    imageSource: ["https://nepaltraveller.com/uploads/destination/hetauda.jpg"]
+    imageSource: ["https://nepaltraveller.com/uploads/destination/hetauda.jpg"],
+    rating:2
+
   }
 ];
 

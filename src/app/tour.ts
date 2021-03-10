@@ -6,6 +6,7 @@ export interface ITour {
   videoLink: string;
   steps: Array<ITour>;
   imageSource?: string[];
+  rating?: Number;
 
 }
 
@@ -17,6 +18,5 @@ export class Tour implements ITour {
   videoLink: string;
   steps: ITour[];
   imageSource?: string[];
-
-  
+  rating?: Number;
 }
