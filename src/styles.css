@@ -213,3 +213,24 @@ can be found in the LICENSE file at https://angular.io/license
   clear: both;
   display: table;
 }
+
+.module {
+  background: olive;
+  border: 1px solid #ccc;
+  margin: 3%;
+  color:yellow;
+  background-size: 100% 20px;
+}
+.module > h2 {
+  padding: 1rem;
+  margin: 0 0 0 0;
+}
+.module > p {
+  padding: 0 1rem;
+}
+
+.stripe {
+  color: yellow;
+  background: darkolivegreen;
+}
+
