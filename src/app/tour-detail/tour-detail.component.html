@@ -1,10 +1,18 @@
-<div class="d-flex justify-content-center">
+<div class="container-fluid mt-4" style="width: 60%;">
 	<div *ngIf="tour">
 		<h3>{{tour.name}}</h3>
+		<app-star 
+			[rating]='tour.rating' 
+			(ratingClicked)='onRatingClicked($event)'></app-star>
 		<!-- Tour Introduction -->
 		<div *ngIf="tour.description">
 			{{tour.description}}
 		</div>
+
+		<div>
+		
+		</div>
+
 
 		<!-- May be rotating pictures -->
 
@@ -17,22 +25,19 @@
 		<mat-vertical-stepper [linear]="isLinear" #stepper>
 			<li *ngFor="let step of tour.steps; index as i; first as isFirst">
 				<mat-step>
-					<ng-template matStepLabel>{{step.name}}</ng-template>
+					<ng-template class="button" matStepLabel>{{step.name}}</ng-template>
 					<app-tour-step [step]="step">
 					</app-tour-step>
-					<div>
-						<button mat-button matStepperNext>Next</button>
-					</div>
+	
 				</mat-step>
 			</li>
 
 			<mat-step>
 				<ng-template matStepLabel>Complete</ng-template>
 				This completes the tour.
-				<div>
-					<button mat-button matStepperPrevious>Back</button>
-					<button mat-button (click)="stepper.reset()">Reset</button>
-				</div>
 			</mat-step>
 		</mat-vertical-stepper>
 	</div>
+</div>
+
+	

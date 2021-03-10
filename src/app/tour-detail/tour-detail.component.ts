@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from "@angular/core";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { Tour } from "../tour";
 
@@ -26,39 +26,26 @@ export class TourDetailComponent implements OnInit {
 
   @Input() tour: Tour;
 
+  
   videoLink?: SafeUrl;
   childrenLinks?: SafeUrl[];
 
   ngOnInit() {
     
-    this.mainFormGroup = this._formBuilder.group({
-      formCount: 0,
-      stepData: this._formBuilder.array([
-        this._formBuilder.group({
-          name: ["Benktesh", Validators.required],
-          detail: ["Mugatu", Validators.required],
-          title: "Benktesh"
-
-        }),
-        this._formBuilder.group({
-          name: ["Bang", Validators.required],
-          detail: ["Chang", Validators.required],
-        title: "Sharma"
-
-        })
-      ])
-    });
+  
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    //console.log(changes['tour'].currentValue);
-
     console.log("changing tour");
     this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.tour ? this.tour.videoLink : ""
     );
 
-  
+  }
+
+  onRatingClicked(message: string): void{
+    console.log(`${this.tour.id} ${this.tour.name} : ${message}`)  ;
+    //TODO call services
   }
 
 }

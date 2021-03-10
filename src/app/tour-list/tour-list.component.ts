@@ -25,6 +25,7 @@ export class TourListComponent {
   
   selectedTour?: ITour;
   videoLink?: SafeUrl;
+  clear:boolean = true; //in the beginning no detained view
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -37,7 +38,9 @@ export class TourListComponent {
     this.filteredTours = this.tours;
   }
 
-  onSelect(tour: ITour): void {
+  onSelect(tour: ITour): void { 
+    console.log("Selected a tour")
+    this.clear = false; 
     this.selectedTour = tour;
     this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(
       tour.videoLink
@@ -80,6 +83,10 @@ export class TourListComponent {
       return tour.imageSource[Math.floor(Math.random() * tour.imageSource.length)];
     }
 
+  }
+
+  ClearSelected(){
+    this.clear=true; 
   }
 
 }

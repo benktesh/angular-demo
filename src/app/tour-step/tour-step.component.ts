@@ -15,7 +15,6 @@ export class TourStepComponent implements OnInit {
 
   ngOnInit() {
     this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(
-
       this.step.videoLink
     );
   }

@@ -53,6 +53,7 @@ import { MatTreeModule } from "@angular/material/tree";
 import { OverlayModule } from "@angular/cdk/overlay";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TourStepComponent } from './tour-step/tour-step.component';
+import { StarComponent } from './shared/star/star.component';
 
 @NgModule({
   imports: [
@@ -111,7 +112,8 @@ import { TourStepComponent } from './tour-step/tour-step.component';
     TopBarComponent,
     TourListComponent,
     TourDetailComponent,
-    TourStepComponent
+    TourStepComponent,
+    StarComponent
   ],
   bootstrap: [AppComponent]
 })

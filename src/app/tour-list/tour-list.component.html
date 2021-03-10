@@ -6,7 +6,7 @@ Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 -->
 <div class="example" style="margin:auto;max-width:300px">
-	<input type='text' [(ngModel)]='listFilter' placeholder="Search for a tour.."/>
+	<input type='text' [(ngModel)]='listFilter' placeholder="Search for a tour.." />
 	<button type="submit"><i class="material-icons">search</i></button>
 
 </div>
@@ -44,9 +44,18 @@ can be found in the LICENSE file at https://angular.io/license
 
 </div>
 
-<div class="container-fluid mt-4">
-	<div style="vertical-align:top; align-content: center;">
-		<app-tour-detail [tour]="selectedTour">
-		</app-tour-detail>
+<div class="justify-content-center" *ngIf="!clear">
+			<app-tour-detail [tour]="selectedTour">
+			</app-tour-detail>
+			<div style="text-align: center;margin: 5px;">
+				<button (click)='ClearSelected()' class="justify-content-center" >Close</button>
+			</div>
+</div>
+
+<div *ngIf="clear" style="text-align: center;margin: 25px;" class="justify-content-center">
+	<div  class="card-deck justify-content-center stripe" style="padding: 10px 0 10px 0">
+		Select a tour or search for a tour above
 	</div>
 </div>
+
+
