@@ -9,7 +9,7 @@ import {
 import { Observable } from "rxjs";
 
 import { ITour } from "../tour";
-import { Tours } from "../tours";
+import {TourService} from "../tours/tour.service";
 
 @Component({
   selector: "app-tour-list",
@@ -17,8 +17,8 @@ import { Tours } from "../tours";
   styleUrls: ["./tour-list.component.css"]
 })
 export class TourListComponent {
+
   pageTitle: String = "Availbale Tours";
-  tours = Tours;
   filteredTours: ITour[] = [];
   isLinear = false;
   _filterTour: string = "";
@@ -28,14 +28,14 @@ export class TourListComponent {
   clear:boolean = true; //in the beginning no detained view
 
   constructor(
-    private sanitizer: DomSanitizer,
+    private sanitizer: DomSanitizer, private tourService: TourService
   ) {
+
 
   }
 
   ngOnInit() {
-
-    this.filteredTours = this.tours;
+    this.filteredTours = this.tourService.getTours(); 
   }
 
   onSelect(tour: ITour): void { 
@@ -60,15 +60,15 @@ export class TourListComponent {
     this._listFilter = value;
     this.filteredTours = this.listFilter
       ? this.performFilter(this.listFilter)
-      : this.tours;
+      : this.tourService.getTours();
   }
 
   performFilter(filterBy: string): ITour[] {
     if(filterBy == null || filterBy == "*" || filterBy.length == 0 ){
-      return this.tours;
+      return this.tourService.getTours();  
     }
     filterBy = filterBy.toLocaleLowerCase();
-    return this.tours.filter(
+    return this.tourService.getTours().filter(
       (tour: ITour) =>
         tour.name.toLocaleLowerCase().includes(filterBy) || 
         tour.description.toLocaleLowerCase().includes(filterBy) 
@@ -91,8 +91,3 @@ export class TourListComponent {
 
 }
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

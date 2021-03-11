@@ -185,7 +185,6 @@ const Tours: ITour[] = [
 export class TourService {
 
   getTours(): ITour[] {
-
     return Tours; 
 
   }
