@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../tour';
 
@@ -184,12 +185,13 @@ const Tours: ITour[] = [
 })
 export class TourService {
 
+  constructor(private http: HttpClient){}
+
   getTours(): ITour[] {
+
+    var x = this.http.get("wwww.google.com");
     return Tours; 
 
   }
 
-
-
-  constructor() { }
 }

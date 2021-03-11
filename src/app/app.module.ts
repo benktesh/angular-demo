@@ -54,6 +54,7 @@ import { OverlayModule } from "@angular/cdk/overlay";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TourStepComponent } from './tour-step/tour-step.component';
 import { StarComponent } from './shared/star/star.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -105,6 +106,7 @@ import { StarComponent } from './shared/star/star.component';
     PortalModule,
     ScrollingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([{ path: "", component: TourListComponent }])
   ],
   declarations: [
