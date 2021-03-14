@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../tour';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 
 const LondonAirport: ITour = {
@@ -177,6 +178,8 @@ const Tours: ITour[] = [
 
   }
 ];
+
+const GET_TOUR_URL:string = "https://localhost:5001/api/Tour";
 /**
  * Tour service
  * Encapsulates data access
@@ -184,16 +187,33 @@ const Tours: ITour[] = [
  @Injectable({
   providedIn: 'root'
 })
-const GET_TOUR_URL:string = "https://localhost:5001/api/Tour";
+
 export class TourService {
 
   
   constructor(private http: HttpClient){}
 
   getTours(): Observable<ITour[]> {
-    var x = this.http.get<ITour[]>(GET_TOUR_URL);
+
+  var headers = new Headers;
+  headers.append("Access-Control-Allow-Origin", "true")
+
+    var x = this.http.get<ITour[]>(GET_TOUR_URL).pipe(
+      tap(data => console.log("All: " + JSON.stringify(data))), 
+      catchError(this.handleError));
     return x == null ? of(Tours) : x; 
 
+  }
+
+  private handleError (err: HttpErrorResponse){
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent){
+      errorMessage = `An error occured: ${err.error.message}`;
+    } else {
+      errorMessage = `Server returned code: ${err.status} error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

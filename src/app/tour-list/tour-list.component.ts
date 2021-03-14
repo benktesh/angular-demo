@@ -19,23 +19,35 @@ import {TourService} from "../tours/tour.service";
 export class TourListComponent {
 
   pageTitle: String = "Availbale Tours";
-  filteredTours: ITour[] = [];
+  
+  filteredTours: ITour[] = []; //filtered tours
+  tours: ITour[] = []; //all tours
+
   isLinear = false;
   _filterTour: string = "";
+  errorMessage: any = "";
   
   selectedTour?: ITour;
   videoLink?: SafeUrl;
   clear:boolean = true; //in the beginning no detained view
 
-  constructor(
-    private sanitizer: DomSanitizer, private tourService: TourService
-  ) {
-
-
-  }
+  constructor(private sanitizer: DomSanitizer, private tourService: TourService) {}
 
   ngOnInit() {
-    this.filteredTours = this.tourService.getTours(); 
+    this.getTours(); 
+  }
+
+  private getTours() {
+    this.tourService.getTours().subscribe({
+      next: tours => {
+        this.tours = tours,
+        this.filteredTours = this.tours;
+      },
+      error: err => this.errorMessage = err
+    });
+
+    return this.filteredTours;
+
   }
 
   onSelect(tour: ITour): void { 
@@ -60,15 +72,19 @@ export class TourListComponent {
     this._listFilter = value;
     this.filteredTours = this.listFilter
       ? this.performFilter(this.listFilter)
-      : this.tourService.getTours();
+      : this.getTours();
+  }
+
+  callService() {
+
   }
 
   performFilter(filterBy: string): ITour[] {
     if(filterBy == null || filterBy == "*" || filterBy.length == 0 ){
-      return this.tourService.getTours();  
+      return  this.getTours(); ;  
     }
     filterBy = filterBy.toLocaleLowerCase();
-    return this.tourService.getTours().filter(
+    return this.getTours().filter(
       (tour: ITour) =>
         tour.name.toLocaleLowerCase().includes(filterBy) || 
         tour.description.toLocaleLowerCase().includes(filterBy) 
