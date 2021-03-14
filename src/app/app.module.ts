@@ -7,6 +7,8 @@ import { AppComponent } from "./app.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
 import { TourListComponent } from "./tour-list/tour-list.component";
 import { TourDetailComponent } from "./tour-detail/tour-detail.component";
+import { WelcomeComponent } from "./welcome/welcome.component";  
+import { AboutComponent } from "./about/about.component";  
 
 import { A11yModule } from "@angular/cdk/a11y";
 import { ClipboardModule } from "@angular/cdk/clipboard";
@@ -55,6 +57,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { TourStepComponent } from './tour-step/tour-step.component';
 import { StarComponent } from './shared/star/star.component';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   imports: [
@@ -107,7 +110,16 @@ import { HttpClientModule } from '@angular/common/http';
     ScrollingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([{ path: "", component: TourListComponent }])
+    RouterModule.forRoot([
+      { path: "tours", component: TourListComponent },
+      { path: "tour/:id", component: TourDetailComponent },
+      { path: "about", component: AboutComponent },
+      { path:  "welcome", component: WelcomeComponent },
+      { path: "", redirectTo: 'welcome', pathMatch: 'full'},
+      { path: "**", redirectTo: 'welcome', pathMatch: 'full'},
+    
+    
+    ])
   ],
   declarations: [
     AppComponent,

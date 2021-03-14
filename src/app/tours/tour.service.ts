@@ -199,7 +199,7 @@ export class TourService {
   headers.append("Access-Control-Allow-Origin", "true")
 
     var x = this.http.get<ITour[]>(GET_TOUR_URL).pipe(
-      tap(data => console.log("All: " + JSON.stringify(data))), 
+      tap(data => console.log("All good")), 
       catchError(this.handleError));
     return x; 
 

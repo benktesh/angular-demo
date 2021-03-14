@@ -70,25 +70,24 @@ export class TourListComponent {
 
   set listFilter(value: string) {
     this._listFilter = value;
-    this.filteredTours = this.listFilter
-      ? this.performFilter(this.listFilter)
-      : this.getTours();
+    this.filteredTours = this.performFilter(this._listFilter);
+    
   }
 
-  callService() {
-
-  }
 
   performFilter(filterBy: string): ITour[] {
+    console.log("Filtering for: " + filterBy);
     if(filterBy == null || filterBy == "*" || filterBy.length == 0 ){
       return  this.getTours(); ;  
     }
     filterBy = filterBy.toLocaleLowerCase();
-    return this.getTours().filter(
+    this.filteredTours = this.tours.filter(
       (tour: ITour) =>
         tour.name.toLocaleLowerCase().includes(filterBy) || 
         tour.description.toLocaleLowerCase().includes(filterBy) 
     );
+
+    return this.filteredTours; 
   }
 
   getTourImage(tour: ITour) {

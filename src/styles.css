@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.nav .navbar-nav {
+  color: white;
+}
+
 .card-img-overlay {
   background-color: rgba(#000, 0.4);
 }
