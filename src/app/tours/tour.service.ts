@@ -201,7 +201,7 @@ export class TourService {
     var x = this.http.get<ITour[]>(GET_TOUR_URL).pipe(
       tap(data => console.log("All: " + JSON.stringify(data))), 
       catchError(this.handleError));
-    return x == null ? of(Tours) : x; 
+    return x; 
 
   }
 
@@ -213,7 +213,7 @@ export class TourService {
       errorMessage = `Server returned code: ${err.status} error message is: ${err.message}`;
     }
     console.error(errorMessage);
-    return throwError(errorMessage);
+    return of(Tours); 
   }
 
 }
