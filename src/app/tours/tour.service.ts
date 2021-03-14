@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ITour } from '../tour';
+import { Observable, of } from 'rxjs';
 
 
 const LondonAirport: ITour = {
@@ -183,14 +184,15 @@ const Tours: ITour[] = [
  @Injectable({
   providedIn: 'root'
 })
+const GET_TOUR_URL:string = "https://localhost:5001/api/Tour";
 export class TourService {
 
+  
   constructor(private http: HttpClient){}
 
-  getTours(): ITour[] {
-
-    var x = this.http.get("wwww.google.com");
-    return Tours; 
+  getTours(): Observable<ITour[]> {
+    var x = this.http.get<ITour[]>(GET_TOUR_URL);
+    return x == null ? of(Tours) : x; 
 
   }
 
