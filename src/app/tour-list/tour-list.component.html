@@ -13,14 +13,14 @@ can be found in the LICENSE file at https://angular.io/license
 
 
 <div class="card-deck justify-content-center" style="background-color: darkolivegreen;">
-	<div *ngFor="let tour of filteredTours" [class.selected]="tour === selectedTour"
-		[class.videoLink]="this.sanitizer.bypassSecurityTrustUrl(tour.videoLink)" (click)="onSelect(tour)">
-
+	<div *ngFor="let tour of filteredTours" [class.selected]="tour === selectedTour" [class.videoLink]="this.sanitizer.bypassSecurityTrustUrl(tour.videoLink)" (click)="onSelect(tour)">
+		<a [routerLink]="['/tours', tour.id]">{{tour.id}}</a>
 		<div class="container-fluid mt-4">
 			<div class="row justify-content-center">
 				<div class="col-auto mb-3">
 					<div class='card' style="width: 18rem;" (click)="onSelect(tour)">
 
+						
 						<img class="card-img" style="width: 18rem; height: 12rem" src={{getTourImage(tour)}}
 							alt={{tour.name}}>
 						<div class="card-img-overlay text-white d-flex flex-column justify-content-center">

@@ -3,6 +3,8 @@ import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { Tour } from "../tour";
 
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { TourService } from "../tours/tour.service";
 
 @Component({
   selector: "app-tour-detail",
@@ -12,7 +14,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class TourDetailComponent implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder, 
+    private route: ActivatedRoute,
+    private _tourService: TourService
   ) {}
 
   isLinear = false;
@@ -31,8 +35,15 @@ export class TourDetailComponent implements OnInit {
   childrenLinks?: SafeUrl[];
 
   ngOnInit() {
-    
-  
+    let id = +this.route.snapshot.paramMap.get('id');
+    console.log(id);
+
+    this._tourService.getTour(id.toString()).subscribe({
+      next: tours => {
+        console.log(tours);
+        this.tour = tours;
+      }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {

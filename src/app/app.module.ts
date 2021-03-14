@@ -112,7 +112,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot([
       { path: "tours", component: TourListComponent },
-      { path: "tour/:id", component: TourDetailComponent },
+      { path: "tours/:id", component: TourDetailComponent },
       { path: "about", component: AboutComponent },
       { path:  "welcome", component: WelcomeComponent },
       { path: "", redirectTo: 'welcome', pathMatch: 'full'},

@@ -1,8 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ITour } from '../tour';
+import { ITour, Tour } from '../tour';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { url } from 'node:inspector';
 
 
 const LondonAirport: ITour = {
@@ -180,6 +181,8 @@ const Tours: ITour[] = [
 ];
 
 const GET_TOUR_URL:string = "https://localhost:5001/api/Tour";
+
+
 /**
  * Tour service
  * Encapsulates data access
@@ -204,6 +207,16 @@ export class TourService {
     return x; 
 
   }
+
+  getTour(id: any): Observable<ITour> {
+    const url = `${GET_TOUR_URL}/${id}`;
+    return this.http.get<ITour>(url).pipe(
+      tap(_ => console.log(JSON.stringify(_) + " from " + url),
+      catchError(this.handleError))
+      );
+  }
+
+ 
 
   private handleError (err: HttpErrorResponse){
     let errorMessage = '';
