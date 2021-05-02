@@ -5,14 +5,27 @@
   To learn more about this file see: https://angular.io/config/solution-tsconfig.
 */
 {
-    "files": [],
-    "references": [
-      {
-        "path": "./tsconfig.app.json"
-      },
-      {
-        "path": "./tsconfig.spec.json"
-      }
-  ]
-  }
-  
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowJs": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+]
+}
