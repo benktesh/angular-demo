@@ -7,7 +7,7 @@ import { AppComponent } from "./app.component";
 import { TopBarComponent } from "./top-bar/top-bar.component";
 import { TourListComponent } from "./tour-list/tour-list.component";
 import { TourDetailComponent } from "./tour-detail/tour-detail.component";
-import { WelcomeComponent } from "./welcome/welcome.component";
+//import { WelcomeComponent } from "./welcome/welcome.component";
 
 import { A11yModule } from "@angular/cdk/a11y";
 import { ClipboardModule } from "@angular/cdk/clipboard";
@@ -112,9 +112,9 @@ import { HttpClientModule } from "@angular/common/http";
       { path: "tours", component: TourListComponent },
       { path: "tours/:id", component: TourDetailComponent },
       //{ path: "about", component: AboutComponent },
-      { path: "welcome", component: WelcomeComponent },
-      { path: "", redirectTo: "welcome", pathMatch: "full" },
-      { path: "**", redirectTo: "welcome", pathMatch: "full" }
+      //{ path: "welcome", component: WelcomeComponent },
+      { path: "", redirectTo: "tours", pathMatch: "full" },
+      { path: "**", redirectTo: "tours", pathMatch: "full" }
     ])
   ],
   declarations: [
